@@ -4,11 +4,12 @@ import { Card, Button } from 'react-bootstrap'
 
 const SingleBook = ({ book }) => {
   return (
-    <Card style={{ width: '13rem' }}>
+    <Card style={{ width: '13rem' }} >
       <Card.Img variant="top" src={book.img} />
       <Card.Body>
         <Card.Title>{book.title}</Card.Title>
-        <Card.Text>$ {book.price}</Card.Text>
+        <Card.Text>$ {book.price} | {book.asin}
+        </Card.Text>
         <Button variant="outline-warning">Buy Now</Button>
       </Card.Body>
     </Card>
