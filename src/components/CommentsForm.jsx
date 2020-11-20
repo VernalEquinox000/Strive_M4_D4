@@ -1,6 +1,8 @@
 import React from 'react'
 import { Alert, Button, Col, Form, Row, Spinner } from 'react-bootstrap'
-import BookList from './BookList'
+import SingleBook from "./SingleBook"
+
+
 
 class CommentsForm extends React.Component {
     state = {
@@ -24,11 +26,11 @@ class CommentsForm extends React.Component {
         this.setState({ feedback: feedback })
     }
 
-    submitComment = async (e) => {
+    /* submitComment = async (e) => {
         e.preventDefault();
         this.setState({ loading: true })
         try {
-            let response = await fetch('https://striveschool-api.herokuapp.com/api/comments/' + elementId,
+            let response = await fetch('https://striveschool-api.herokuapp.com/api/comments/' ,
                 {
                     method: 'POST',
                     body: JSON.stringify(this.state.feedback),
@@ -39,34 +41,8 @@ class CommentsForm extends React.Component {
 
                         "Content-Type": "application/json"
                     })
-                })
-            if (response.ok) {
-                alert('Your comment has been saved!')
-                this.setState({
-                    feedback: {
-            comment: "",
-            rate: 0,
-            elementId: " "
-        },
-                    errMessage: '',
-                    loading: false,
-                })
-            } else {
-                console.log('an error occurred')
-                let error = await response.json()
-                this.setState({
-                    errMessage: error.message,
-                    loading: false,
-                })
-            }
-        } catch (e) {
-            console.log(e) // Error
-            this.setState({
-                errMessage: e.message,
-                loading: false,
-            })
-        }
-    }
+                }) */
+            
 
 
 
@@ -122,6 +98,7 @@ class CommentsForm extends React.Component {
                                     id="rate"
                                     value={this.state.feedback.rate}
                                     onChange={this.updateComment}
+                                    required
                                 >
                                     <option>1</option>
                                     <option>2</option>
@@ -141,6 +118,8 @@ class CommentsForm extends React.Component {
                                     placeholder="element Id"
                                     value={this.state.feedback.elementId}
                                     onChange={this.updateComment}
+                                    disabled
+
                                 />
                             </Form.Group>
                         </Col>
